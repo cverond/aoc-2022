@@ -1,0 +1,9 @@
+{
+  "name": "aoc-2022",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:cverond/aoc-2022.git",
+  "author": "Cristiano Verondini <cristiano@verondini.it>",
+  "license": "MIT",
+  "type": "module"
+}
