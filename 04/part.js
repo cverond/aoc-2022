@@ -1,4 +1,4 @@
-import { readLines, arraySum, arrayChunks } from "../utils.js";
+import { readLines } from "../utils.js";
 
 
 const lines = readLines('./data.txt');
