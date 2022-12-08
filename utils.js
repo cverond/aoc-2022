@@ -3,12 +3,12 @@ import { readFileSync } from 'fs';
 
 export const readFile = (fn) => {
 
-	return readFileSync(fn, 'utf-8');
+	return readFileSync(fn, 'utf-8').trim();
 };
 
 export const readLines = (fn) => {
 
-	return readFile(fn).trim().split(/\n/);
+	return readFile(fn).split(/\n/);
 };
 
 export const arraySum = (a) => a.reduce((a, b) => a + b, 0);

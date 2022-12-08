@@ -1,5 +1,4 @@
-import { readFile } from "../utils.js";
-
+import { readFile, arraySum } from '../utils.js';
 
 const file = readFile('./data.txt');
 
@@ -8,14 +7,14 @@ const groups = file.split(/\n\n/);
 const single = groups
 	.map(block => block.split(/\n/))
 	.map(
-		bi => bi
-			.map(n => parseInt(n, 10))
-			.reduce((a, i) => a + i, 0)
+		bi => arraySum(bi.map(n => Number(n)))
 	)
 ;
 
-const sorted = single.sort((a, b) => b - a);
+const sum = arraySum(
+	single
+		.sort((a, b) => b - a)
+		.slice(0, 3)
+);
 
-const sum = sorted.slice(0, 3).reduce((a, i) => a + i, 0);
-
-console.log(`Answer is: ${sum}`);
+console.log(`Answer 2 is: ${sum}`);

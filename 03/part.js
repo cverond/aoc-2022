@@ -1,18 +1,17 @@
-import { readLines, arraySum, arrayChunks } from "../utils.js";
-
+import { readLines, arraySum, arrayChunks } from '../utils.js';
 
 const lines = readLines('./data.txt');
 
 const chMap = ' abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-	// non ottimizzata ma efficace, nel caso di due set ripetere il secondo
+	// not optimal solution
 
-const findCommonPriority = (a, b, c) => {
+const findCommonPriority = (a, b, c = null) => {
 
-	const bs = new Set(b), cs = new Set(c);
+	const bs = new Set(b), cs = c === null ? null : new Set(c);
 
 	for (const i of [...a])
-		if (bs.has(i) && cs.has(i))
+		if (bs.has(i) && (c === null || cs.has(i)))
 			return chMap.indexOf(i);
 };
 
@@ -20,7 +19,7 @@ const common = lines.map(l => {
 
 	const a = l.substr(0, l.length / 2), b = l.substr(l.length / 2);
 
-	return findCommonPriority(a, b, b);
+	return findCommonPriority(a, b);
 });
 
 const answer1 = arraySum(common);

@@ -1,9 +1,6 @@
-import { parentPort } from "worker_threads";
-import { readFile } from "../utils.js";
+import { readLines } from "../utils.js";
 
-const file = readFile('./data.txt');
-
-const lines = file.split(/\n/);
+const lines = readLines('./data.txt');
 
 const shapeUsed = {
 	X: 1,
@@ -60,4 +57,3 @@ const score2 = lines.reduce((a, l) => {
 }, 0);
 
 console.log(`Answer 2 is: ${score2}`);
-

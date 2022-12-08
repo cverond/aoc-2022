@@ -1,5 +1,4 @@
-import { readFile } from "../utils.js";
-
+import { readFile, arraySum } from '../utils.js';
 
 const file = readFile('./data.txt');
 
@@ -8,12 +7,10 @@ const groups = file.split(/\n\n/);
 const single = groups
 	.map(block => block.split(/\n/))
 	.map(
-		bi => bi
-			.map(n => parseInt(n, 10))
-			.reduce((a, i) => a + i, 0)
+		bi => arraySum(bi.map(n => Number(n)))
 	)
 ;
 
 const max = Math.max(...single);
 
-console.log(`Answer is: ${max}`);
+console.log(`Answer 1 is: ${max}`);

@@ -1,8 +1,8 @@
-import { d, readLines, arraySum } from '../utils.js';
+import { readLines, arraySum } from '../utils.js';
 
 const commands = readLines('./data.txt');
 
-const BuildNode = (parent = null) => ({ p: parent, d: {}, f: {} });
+const createNewNode = (parent = null) => ({ p: parent, d: {}, f: {} });
 
 const printNode = (node, l = 0) => {
 
@@ -40,7 +40,7 @@ const harvestSizes = (node, path = '/', rs = []) => {
 	return size;
 };
 
-const root = BuildNode();
+const root = createNewNode();
 let curNode = root;
 
 for (let command of commands) {
@@ -62,7 +62,7 @@ for (let command of commands) {
 					else {
 
 						if (! curNode.d[path])
-							curNode.d[path] = BuildNode(curNode);
+							curNode.d[path] = createNewNode(curNode);
 
 						curNode = curNode.d[path];
 					}
