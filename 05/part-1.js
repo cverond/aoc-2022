@@ -1,4 +1,4 @@
-import { readFile, arrayChunks } from "../utils.js";
+import { readFile } from "../utils.js";
 
 
 const [stacks, moves] = readFile('./data.txt').split('\n\n').map(b => b.split('\n'));
