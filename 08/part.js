@@ -20,44 +20,36 @@ const treeHeight = (row, col) => mapOfTrees[row][col];
 
 const isTreeVisibleFromTop = (height, row, col) => {
 
-	for (let r = 0; r < row; r++) {
-
+	for (let r = 0; r < row; r++)
 		if (treeHeight(r, col) >= height)
 			return false;
-	}
 
 	return true;
 };
 
 const isTreeVisibleFromBottom = (height, row, col) => {
 
-	for (let r = row + 1; r < mapHeight; r++) {
-
+	for (let r = row + 1; r < mapHeight; r++)
 		if (treeHeight(r, col) >= height)
 			return false;
-	}
 
 	return true;
 };
 
 const isTreeVisibleFromLeft = (height, row, col) => {
 
-	for (let c = 0; c < col; c++) {
-
+	for (let c = 0; c < col; c++)
 		if (treeHeight(row, c) >= height)
 			return false;
-	}
 
 	return true;
 };
 
 const isTreeVisibleFromRight = (height, row, col) => {
 
-	for (let c = col + 1; c < mapWidth; c++) {
-
+	for (let c = col + 1; c < mapWidth; c++)
 		if (treeHeight(row, c) >= height)
 			return false;
-	}
 
 	return true;
 };
@@ -96,54 +88,38 @@ console.log(`Answer 1 is: ${ nVisible }`);
 
 const scenicScoreFromTop = (height, row, col) => {
 
-	let cnt = 0;
-	for (let r = row - 1; r >= 0; r--) {
-
-		cnt++;
+	for (let r = row - 1; r >= 0; r--)
 		if (treeHeight(r, col) >= height)
-			return cnt;
-	}
+			return row - r;
 
-	return cnt;
+	return row;
 };
 
 const scenicScoreFromBottom = (height, row, col) => {
 
-	let cnt = 0;
-	for (let r = row + 1; r < mapHeight; r++) {
-
-		cnt++;
+	for (let r = row + 1; r < mapHeight; r++)
 		if (treeHeight(r, col) >= height)
-			return cnt;
-	}
+			return r - row;
 
-	return cnt;
+	return mapHeight - 1 - row;
 };
 
 const scenicScoreFromLeft = (height, row, col) => {
 
-	let cnt = 0;
-	for (let c = col - 1; c >= 0; c--) {
-
-		cnt++;
+	for (let c = col - 1; c >= 0; c--)
 		if (treeHeight(row, c) >= height)
-			return cnt;
-	}
+			return col - c;
 
-	return cnt;
+	return col;
 };
 
 const scenicScoreFromRight = (height, row, col) => {
 
-	let cnt = 0;
-	for (let c = col + 1; c < mapWidth; c++) {
-
-		cnt++;
+	for (let c = col + 1; c < mapWidth; c++)
 		if (treeHeight(row, c) >= height)
-			return cnt;
-	}
+			return c - col;
 
-	return cnt;
+	return mapWidth - 1 - col;
 };
 
 const scenicScore = (height, row, col) => {
