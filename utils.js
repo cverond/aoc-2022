@@ -8,9 +8,8 @@ export const readFile = (fn) => {
 
 export const readLines = (fn) => {
 
-	return readFile(fn).split(/\n/);
+	return readFile(fn).trim().split(/\n/);
 };
-
 
 export const arraySum = (a) => a.reduce((a, b) => a + b, 0);
 
@@ -22,3 +21,5 @@ export const arrayChunks = (a, size) => {
 
 	return res;
 }
+
+export const d = (...ol) => ol.forEach(o => console.log(JSON.stringify(o, null, 2)));
