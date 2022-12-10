@@ -23,3 +23,7 @@ export const arrayChunks = (a, size) => {
 }
 
 export const d = (...ol) => ol.forEach(o => console.log(JSON.stringify(o, null, 2)));
+
+
+export const numberPad = (n, places) => `${n}`.padStart(places, ' ');
+
