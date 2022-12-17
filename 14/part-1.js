@@ -1,4 +1,4 @@
-import { readLines, numberPad, drawMapOfSymbols } from '../utils.js';
+import { readLines, numberPad, createMap, drawMapOfSymbols } from '../utils.js';
 
 const lines = readLines('./data.txt');
 
@@ -28,20 +28,6 @@ let
 ;
 
 console.log(xmin, xmax, ymin, ymax)
-
-const map = [];
-
-const createMap = (xmin, xmax, ymin, ymax) => {
-
-	for (let y = ymin; y <= ymax; y++) {
-
-		const row = [];
-		for (let x = xmin; x <= xmax; x++)
-			row[x] = '.';
-
-		map[y] = row;
-	}
-};
 
 const drawLine = (p1, p2) => {
 
@@ -79,7 +65,7 @@ const drawPath = (path) => {
 	}
 };
 
-createMap(xmin, xmax, ymin, ymax);
+const map = createMap(xmin, xmax, ymin, ymax, '.');
 
 for (let path of paths)
 	drawPath(path);

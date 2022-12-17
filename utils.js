@@ -34,6 +34,21 @@ export const oMap = (obj, fn) =>
 	)
 ;
 
+export const createMap = (xmin, xmax, ymin, ymax, v) => {
+
+	const map = [];
+	for (let y = ymin; y <= ymax; y++) {
+
+		const row = [];
+		for (let x = xmin; x <= xmax; x++)
+			row[x] = v;
+
+		map[y] = row;
+	}
+
+	return map;
+};
+
 	// every symbol should be 1 char
 
 export const drawMapOfSymbols = (map) => {
