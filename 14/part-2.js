@@ -1,4 +1,4 @@
-import { readLines, numberPad } from '../utils.js';
+import { readLines, numberPad, drawMapOfSymbols } from '../utils.js';
 
 const lines = readLines('./data.txt');
 
@@ -91,26 +91,6 @@ const drawPath = (path) => {
 	}
 };
 
-const drawMap = () => {
-
-	const h = [];
-	for (let x = xmin; x <= xmax; x++)
-		h.push(numberPad(x, 3));
-
-	console.log('   ', h.map(c => c[0]).join(''));
-	console.log('   ', h.map(c => c[1]).join(''));
-	console.log('   ', h.map(c => c[2]).join(''));
-
-	for (let y = ymin; y <= ymax; y++) {
-
-		const row = [];
-		for (let x = xmin; x <= xmax; x++)
-			row.push(map[y][x]);
-
-		console.log(numberPad(y, 3), row.join(''));
-	}
-};
-
 createMap(xmin, xmax, ymin, ymax);
 
 for (let path of paths)
@@ -118,7 +98,7 @@ for (let path of paths)
 
 map[ sand[1] ][ sand[0] ] = '+';
 
-drawMap();
+drawMapOfSymbols(map);
 
 let n = 0;
 
@@ -156,6 +136,6 @@ outer: while (++n) {
 	}
 }
 
-drawMap();
+drawMapOfSymbols(map);
 
 console.log(`Answer 2 is: ${ n }`);
