@@ -72,39 +72,55 @@ for (let path of paths)
 
 map[ sand[1] ][ sand[0] ] = '+';
 
-drawMapOfSymbols(map);
+// drawMapOfSymbols(map);
 
-let n = 0;
-outer: while (++n) {
+const delay = time => new Promise(resolve => setTimeout(resolve, time));
 
-	let s = [ ...sand ];
-	while (true) {
+console.log('\x1b[2J');
 
-		if (s[1] + 1 > ymax)
-			break outer;
+const run = async () => {
 
-		if (map[ s[1] + 1 ][ s[0] ] === '.') {
+	let n = 0;
+	outer: while (++n) {
 
-			s[1]++;
+		let s = [ ...sand ];
+		while (true) {
 
-		} else if (map[ s[1] + 1 ][ s[0] - 1 ] === '.') {
+			if (s[1] + 1 > ymax)
+				break outer;
 
-			s[1]++;
-			s[0]--;
+			if (map[ s[1] + 1 ][ s[0] ] === '.') {
 
-		} else if (map[ s[1] + 1 ][ s[0] + 1 ] === '.') {
+				s[1]++;
 
-			s[1]++;
-			s[0]++;
+			} else if (map[ s[1] + 1 ][ s[0] - 1 ] === '.') {
 
-		} else {
+				s[1]++;
+				s[0]--;
 
-			map[ s[1] ][ s[0] ] = 'o';
-			break;
+			} else if (map[ s[1] + 1 ][ s[0] + 1 ] === '.') {
+
+				s[1]++;
+				s[0]++;
+
+			} else {
+
+				map[ s[1] ][ s[0] ] = 'o';
+				break;
+			}
 		}
+
+		console.log('\x1b[H');
+		drawMapOfSymbols(map);
+
+		await delay(30);
 	}
+
+	return n;
 }
 
-drawMapOfSymbols(map);
+// drawMapOfSymbols(map);
+
+const n = run();
 
 console.log(`Answer 1 is: ${ n - 1 }`);
